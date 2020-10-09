@@ -24,21 +24,8 @@ from Settings import Settings, ArgumentDefaultsHelpFormatter
 import AutoGrotto
 
 def getSettings(input_data):
-    parser = argparse.ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
-
-    parser.add_argument('--settings_string', help='Provide sharable settings using a settings string. This will override all flags that it specifies.')
-
-    args = parser.parse_args()
-
     settings = Settings({})
-    settings_string = None
-    assert not (('settings_string' in input_data) and (args.settings_string))
-    if 'settings_string' in input_data:
-        settings_string = expectOne(input_data['settings_string'])
-    elif args.settings_string is not None:
-        settings_string = args.settings_string
-    else:
-        raise Exception("Please provide settings_string as an argument or in the text file")
+    settings_string = expectOne(input_data['settings_string'])
 
     assert settings_string
     settings.update_with_settings_string(settings_string)
@@ -319,9 +306,10 @@ def parseKnownExits(lines):
         result.append((match.group(1), match.group(2)))
     return result
 
-def getInputData(filename):
+def getInputData(filename, args=None):
     try:
-        input_data = TextSettings.readFromFile(filename)
+        file_path = os.path.join('saves', filename)
+        input_data = TextSettings.readFromFile(file_path)
     except FileNotFoundError:
         input_data = {}
 
@@ -340,6 +328,19 @@ def getInputData(filename):
         for x in migrate_these:
             input_data['please_explore'].remove(x)
             input_data['known_exits'].append(x)
+
+    args_settings = None
+    if args is not None:
+        args_settings = args.settings_string
+
+    if 'settings_string' in input_data:
+        assert args_settings is None
+    elif args_settings is not None:
+        assert 'settings_string' not in input_data
+        input_data['settings_string'] = [args.settings_string]
+    else:
+        raise Exception("Please provide settings_string as an argument or in the text file")
+
     return input_data
 
 def startWorldBasedOnData(input_data):
@@ -435,11 +436,16 @@ def writeResultsToFile(world, input_data, output_data, output_known_exits, filen
     TextSettings.writeToFile(output_data, filename, priorities)
 
 def main():
-    filename = "output.txt"
-    input_data = getInputData(filename)
+    parser = argparse.ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
+    parser.add_argument('--settings_string', help='Provide sharable settings using a settings string. This will override all flags that it specifies.')
+    parser.add_argument('--save_filename', default="output.txt", help='This is the file used for saving your current game.')
+    args = parser.parse_args()
+
+    save_filename = args.save_filename
+    input_data = getInputData(save_filename, args)
     world, output_known_exits = startWorldBasedOnData(input_data)
     output_data = solve(world)
-    writeResultsToFile(world, input_data, output_data, output_known_exits, filename)
+    writeResultsToFile(world, input_data, output_data, output_known_exits, save_filename)
 
 if __name__ == "__main__":
     main()

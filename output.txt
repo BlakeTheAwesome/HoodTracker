@@ -1,0 +1,244 @@
+please_explore:
+Dodongos Cavern Entryway -> Dodongos Cavern Beginning goesto ?
+
+possible_locations:
+Links Pocket (in Root) (child or adult)
+KF Kokiri Sword Chest (in Kokiri Forest) (child)
+KF Midos Top Left Chest (in KF Midos House) (child or adult)
+KF Midos Top Right Chest (in KF Midos House) (child or adult)
+KF Midos Bottom Left Chest (in KF Midos House) (child or adult)
+KF Midos Bottom Right Chest (in KF Midos House) (child or adult)
+KF Shop Item 1 (in KF Kokiri Shop) (child or adult)
+KF Shop Item 2 (in KF Kokiri Shop) (child or adult)
+KF Shop Item 3 (in KF Kokiri Shop) (child or adult)
+KF Shop Item 4 (in KF Kokiri Shop) (child or adult)
+KF Shop Item 5 (in KF Kokiri Shop) (child or adult)
+KF Shop Item 6 (in KF Kokiri Shop) (child or adult)
+KF Shop Item 7 (in KF Kokiri Shop) (child or adult)
+KF Shop Item 8 (in KF Kokiri Shop) (child or adult)
+LW Gift from Saria (in LW Bridge From Forest) (child or adult)
+LH Child Fishing (in LH Fishing Hole) (child)
+GV Waterfall Freestanding PoH (in GV Stream) (child or adult)
+GV Crate Freestanding PoH (in GV Crate Ledge) (child)
+HC Malon Egg (in Hyrule Castle Grounds) (child)
+OGC GS (in Ganons Castle Grounds) (adult)
+Market GS Guard House (in Market Guard House) (child)
+Market Bazaar Item 1 (in Market Bazaar) (child)
+Market Bazaar Item 2 (in Market Bazaar) (child)
+Market Bazaar Item 3 (in Market Bazaar) (child)
+Market Bazaar Item 4 (in Market Bazaar) (child)
+Market Bazaar Item 5 (in Market Bazaar) (child)
+Market Bazaar Item 6 (in Market Bazaar) (child)
+Market Bazaar Item 7 (in Market Bazaar) (child)
+Market Bazaar Item 8 (in Market Bazaar) (child)
+Market Shooting Gallery Reward (in Market Shooting Gallery) (child)
+Market Potion Shop Item 1 (in Market Potion Shop) (child)
+Market Potion Shop Item 2 (in Market Potion Shop) (child)
+Market Potion Shop Item 3 (in Market Potion Shop) (child)
+Market Potion Shop Item 4 (in Market Potion Shop) (child)
+Market Potion Shop Item 5 (in Market Potion Shop) (child)
+Market Potion Shop Item 6 (in Market Potion Shop) (child)
+Market Potion Shop Item 7 (in Market Potion Shop) (child)
+Market Potion Shop Item 8 (in Market Potion Shop) (child)
+Market Bombchu Shop Item 1 (in Market Bombchu Shop) (child)
+Market Bombchu Shop Item 2 (in Market Bombchu Shop) (child)
+Market Bombchu Shop Item 3 (in Market Bombchu Shop) (child)
+Market Bombchu Shop Item 4 (in Market Bombchu Shop) (child)
+Market Bombchu Shop Item 5 (in Market Bombchu Shop) (child)
+Market Bombchu Shop Item 6 (in Market Bombchu Shop) (child)
+Market Bombchu Shop Item 7 (in Market Bombchu Shop) (child)
+Market Bombchu Shop Item 8 (in Market Bombchu Shop) (child)
+Market Lost Dog (in Market Dog Lady House) (child)
+Kak Anju as Adult (in Kakariko Village) (adult)
+Kak Anju as Child (in Kakariko Village) (child)
+Kak GS House Under Construction (in Kakariko Village) (child)
+Kak GS Skulltula House (in Kakariko Village) (child)
+Kak GS Guards House (in Kakariko Village) (child)
+Kak GS Tree (in Kakariko Village) (child)
+Kak Man on Roof (in Kak Rooftop) (child or adult)
+Kak Impas House Freestanding PoH (in Kak Impas House Back) (child)
+Kak Windmill Freestanding PoH (in Kak Windmill) (adult)
+Kak Bazaar Item 1 (in Kak Bazaar) (adult)
+Kak Bazaar Item 2 (in Kak Bazaar) (adult)
+Kak Bazaar Item 3 (in Kak Bazaar) (adult)
+Kak Bazaar Item 4 (in Kak Bazaar) (adult)
+Kak Bazaar Item 5 (in Kak Bazaar) (adult)
+Kak Bazaar Item 6 (in Kak Bazaar) (adult)
+Kak Bazaar Item 7 (in Kak Bazaar) (adult)
+Kak Bazaar Item 8 (in Kak Bazaar) (adult)
+Kak Potion Shop Item 1 (in Kak Potion Shop Front) (adult)
+Kak Potion Shop Item 2 (in Kak Potion Shop Front) (adult)
+Kak Potion Shop Item 3 (in Kak Potion Shop Front) (adult)
+Kak Potion Shop Item 4 (in Kak Potion Shop Front) (adult)
+Kak Potion Shop Item 5 (in Kak Potion Shop Front) (adult)
+Kak Potion Shop Item 6 (in Kak Potion Shop Front) (adult)
+Kak Potion Shop Item 7 (in Kak Potion Shop Front) (adult)
+Kak Potion Shop Item 8 (in Kak Potion Shop Front) (adult)
+Graveyard Dampe Gravedigging Tour (in Graveyard) (child)
+Graveyard Shield Grave Chest (in Graveyard Shield Grave) (child or adult)
+Graveyard Hookshot Chest (in Graveyard Dampes Grave) (adult)
+Graveyard Dampe Race Freestanding PoH (in Graveyard Dampes Grave) (adult)
+DMT Freestanding PoH (in Death Mountain) (adult)
+GC GS Center Platform (in Goron City) (adult)
+LLR GS Tree (in Lon Lon Ranch) (child)
+LLR GS Rain Shed (in Lon Lon Ranch) (child)
+LLR Freestanding PoH (in LLR Tower) (child)
+HF Open Grotto Chest (in HF Open Grotto) (child or adult)
+Kak Open Grotto Chest (in Kak Open Grotto) (child or adult)
+ZR Open Grotto Chest (in ZR Open Grotto) (adult)
+
+known_exits:
+
+other_shuffled_exits:
+KF Outside Deku Tree -> Deku Tree Lobby
+Sacred Forest Meadow -> Forest Temple Lobby
+Lake Hylia -> Water Temple Lobby
+Gerudo Fortress -> Gerudo Training Grounds Lobby
+Desert Colossus -> Spirit Temple Lobby
+Kakariko Village -> Bottom of the Well
+Graveyard Warp Pad Region -> Shadow Temple Entryway
+Fire Temple Entrance -> Fire Temple Lower
+Zoras Fountain -> Jabu Jabus Belly Beginning
+Zoras Fountain -> Ice Cavern Beginning
+Deku Tree Lobby -> KF Outside Deku Tree
+Dodongos Cavern Beginning -> Dodongos Cavern Entryway
+Jabu Jabus Belly Beginning -> Zoras Fountain
+Forest Temple Lobby -> Sacred Forest Meadow
+Bottom of the Well -> Kakariko Village
+Fire Temple Lower -> Fire Temple Entrance
+Ice Cavern Beginning -> Zoras Fountain
+Water Temple Lobby -> Lake Hylia
+Shadow Temple Entryway -> Graveyard Warp Pad Region
+Gerudo Training Grounds Lobby -> Gerudo Fortress
+Spirit Temple Lobby -> Desert Colossus
+
+equipment:
+
+checked_off:
+
+one_wallet:
+
+two_wallets:
+
+settings_string:
+AJ3E3EASE8EA2BLKSKWAAJBASAEABGABGAKEWEVY9Q6X5Q6BSFBAA2KLLAA
+
+possible_equipment:
+Bombchus (10)
+Boomerang
+Lens of Truth
+Megaton Hammer
+Cojiro
+Bottle
+Bottle with Milk
+Rutos Letter
+Deliver Letter
+Sell Big Poe
+Magic Bean
+Pocket Egg
+Pocket Cucco
+Odd Mushroom
+Odd Potion
+Poachers Saw
+Broken Sword
+Prescription
+Eyeball Frog
+Eyedrops
+Claim Check
+Kokiri Sword
+Mirror Shield
+Goron Tunic
+Zora Tunic
+Iron Boots
+Hover Boots
+Stone of Agony
+Gerudo Membership Card
+Weird Egg
+Biggoron Sword
+Fire Arrows
+Ice Arrows
+Light Arrows
+Dins Fire
+Nayrus Love
+Farores Wind
+Bombchus (5)
+Bombchus (20)
+Progressive Hookshot
+Progressive Strength Upgrade
+Bomb Bag
+Bow
+Slingshot
+Progressive Wallet
+Progressive Scale
+Bombchus
+Magic Meter
+Ocarina
+Bottle with Red Potion
+Bottle with Green Potion
+Bottle with Blue Potion
+Bottle with Fairy
+Bottle with Fish
+Bottle with Blue Fire
+Bottle with Bugs
+Bottle with Big Poe
+Bottle with Poe
+Double Defense
+Magic Bean Pack
+Triforce Piece
+Zeldas Letter
+Zeldas Lullaby
+Eponas Song
+Suns Song
+Sarias Song
+Song of Time
+Song of Storms
+Minuet of Forest
+Prelude of Light
+Bolero of Fire
+Serenade of Water
+Nocturne of Shadow
+Requiem of Spirit
+Kokiri Emerald
+Goron Ruby
+Zora Sapphire
+Forest Medallion
+Fire Medallion
+Water Medallion
+Shadow Medallion
+Spirit Medallion
+Light Medallion
+Small Key (Bottom of the Well)
+Small Key (Forest Temple)
+Small Key (Fire Temple)
+Small Key (Water Temple)
+Small Key (Shadow Temple)
+Small Key (Spirit Temple)
+Small Key (Gerudo Fortress)
+Small Key (Gerudo Training Grounds)
+Small Key (Ganons Castle)
+Boss Key (Forest Temple)
+Boss Key (Fire Temple)
+Boss Key (Water Temple)
+Boss Key (Shadow Temple)
+Boss Key (Spirit Temple)
+Boss Key (Ganons Castle)
+Bombchu Drop
+Zeldas Letter
+Weird Egg
+Rutos Letter
+Gerudo Membership Card
+Deku Stick Capacity
+Deku Shield
+Gold Skulltula Token
+Hylian Shield
+Pocket Egg
+Pocket Cucco
+Cojiro
+Odd Mushroom
+Poachers Saw
+Broken Sword
+Prescription
+Eyeball Frog
+Eyedrops
+Claim Check
+
