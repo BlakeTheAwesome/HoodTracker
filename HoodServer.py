@@ -3,14 +3,13 @@ import hug
 import json
 
 api = hug.API(__name__)
-api.http.base_url = '/api'
 
 world = None
 settings_string = 'AJ3E3EASE8EA2BLKSKWAAJBASAEABGABGAKEWEVY9Q6X5Q6BSFBAA2KLLAA'
 save_filename = 'output.txt'
 
 
-@hug.get()
+@hug.get('/api/step')
 def step():
     input_data = HoodTracker.getInputData(save_filename)
     if 'settings_string' in input_data:
@@ -25,12 +24,12 @@ def step():
     return output_data
 
 
-@hug.get()
+@hug.get('/api/step')
 def hello_world():
     return "Hello"
 
 
-@hug.get()
+@hug.get('/api/get_world')
 def get_world():
     global world
     if world is None:
@@ -41,7 +40,11 @@ def get_world():
     return json.dumps(world.__dict__, default=serialize)
 
 
-@hug.get()
+@hug.get('/api/save_files')
 def save_files():
     return HoodTracker.getSaveFiles()
+
+@hug.static('/')
+def serve_home():
+    return('./webserver/dist',)
 
