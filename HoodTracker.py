@@ -4,6 +4,7 @@ import sys
 import re
 import argparse
 from CommonUtils import *
+import glob
 
 # Make OoTR work as a submodule in a dir called ./OoT-Randomizer
 try:
@@ -305,6 +306,11 @@ def parseKnownExits(lines):
         assert match
         result.append((match.group(1), match.group(2)))
     return result
+
+
+def getSaveFiles():
+    return [os.path.basename(x) for x in glob.glob('saves/*')]
+
 
 def getInputData(filename, args=None):
     try:

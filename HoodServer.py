@@ -2,6 +2,8 @@ import HoodTracker
 import hug
 import json
 
+api = hug.API(__name__)
+api.http.base_url = '/api'
 
 world = None
 settings_string = 'AJ3E3EASE8EA2BLKSKWAAJBASAEABGABGAKEWEVY9Q6X5Q6BSFBAA2KLLAA'
@@ -37,4 +39,9 @@ def get_world():
     def serialize(obj):
         return f'Todo: serialise {type(obj)}'
     return json.dumps(world.__dict__, default=serialize)
+
+
+@hug.get()
+def save_files():
+    return HoodTracker.getSaveFiles()
 
