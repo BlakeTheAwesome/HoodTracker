@@ -5,6 +5,8 @@ import re
 import argparse
 from CommonUtils import *
 import glob
+import logging
+logging.basicConfig(filename='serverlog.log', level=logging.DEBUG)
 
 # Make OoTR work as a submodule in a dir called ./OoT-Randomizer
 try:
@@ -312,6 +314,10 @@ def getSaveFiles():
     return [os.path.basename(x) for x in glob.glob('saves/*')]
 
 
+def saveFileExists(filename):
+    return os.path.exists(f'saves/{filename}')
+
+
 def getInputData(filename, args=None):
     try:
         file_path = os.path.join('saves', filename)
@@ -337,13 +343,13 @@ def getInputData(filename, args=None):
 
     args_settings = None
     if args is not None:
-        args_settings = args.settings_string
+        args_settings = args['settings_string']
 
     if 'settings_string' in input_data:
         assert args_settings is None
     elif args_settings is not None:
         assert 'settings_string' not in input_data
-        input_data['settings_string'] = [args.settings_string]
+        input_data['settings_string'] = [args_settings]
     else:
         raise Exception("Please provide settings_string as an argument or in the text file")
 
@@ -439,15 +445,17 @@ def writeResultsToFile(world, input_data, output_data, output_known_exits, filen
 
     if priorities is None:
         priorities = ["please_explore", "possible_locations", "known_exits", "other_shuffled_exits"]
-    TextSettings.writeToFile(output_data, filename, priorities)
+
+    file_path = os.path.join('saves', filename)
+    TextSettings.writeToFile(output_data, file_path, priorities)
 
 def main():
     parser = argparse.ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
     parser.add_argument('--settings_string', help='Provide sharable settings using a settings string. This will override all flags that it specifies.')
     parser.add_argument('--save_filename', default="output.txt", help='This is the file used for saving your current game.')
-    args = parser.parse_args()
+    args = vars(parser.parse_args())
 
-    save_filename = args.save_filename
+    save_filename = args.get('save_filename')
     input_data = getInputData(save_filename, args)
     world, output_known_exits = startWorldBasedOnData(input_data)
     output_data = solve(world)

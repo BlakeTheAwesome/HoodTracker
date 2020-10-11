@@ -1,5 +1,8 @@
-import axios from 'axios';
-import { buildUrl } from './network';
+import {
+  get_saveFiles,
+  post_loadSaveFile,
+  post_startNewGame,
+} from '../api/api_settings';
 
 const state = {
   activeFilename: '',
@@ -23,9 +26,7 @@ const mutations = {
 const actions = {
   async loadSaveFileList({ commit }) {
     console.log('loadSaveFileList');
-    const url = buildUrl('save_files');
-    const response = await axios.get(url);
-    const fileList = response.data;
+    const fileList = await get_saveFiles();
     console.log('commiting setSaveFileList ', fileList);
     commit('setSaveFileList', fileList);
     return fileList;
@@ -35,6 +36,26 @@ const actions = {
     const fileList = await dispatch('loadSaveFileList');
     console.log('Commiting', fileList);
     commit('setSaveFileName', fileList[0]);
+  },
+  async loadSaveFile({ commit, dispatch }, filename) {
+    console.log('loadSaveFile');
+    const gameState = await post_loadSaveFile(filename);
+    await dispatch('serverGameState/setGameState', gameState, { root: true });
+    commit('setSaveFileName', filename);
+  },
+  async startNewGame(
+    { commit, dispatch },
+    { filename, settingsString, overwriteExisting }
+  ) {
+    console.log('loadSaveFile');
+    const gameState = await post_startNewGame(
+      filename,
+      settingsString,
+      overwriteExisting
+    );
+    await dispatch('serverGameState/setGameState', gameState, { root: true });
+    commit('setSaveFileName', filename);
+    await dispatch('loadSaveFileList');
   },
 };
 

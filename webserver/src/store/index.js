@@ -1,12 +1,14 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import server from './server';
+import serverSettings from './serverSettings';
+import serverGameState from './serverGameState';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
-    server,
+    serverSettings,
+    serverGameState,
   },
 });
