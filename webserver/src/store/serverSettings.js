@@ -1,5 +1,6 @@
 import {
   get_saveFiles,
+  get_worldConfig,
   post_loadSaveFile,
   post_startNewGame,
 } from '../api/api_settings';
@@ -40,7 +41,11 @@ const actions = {
   async loadSaveFile({ commit, dispatch }, filename) {
     console.log('loadSaveFile');
     const gameState = await post_loadSaveFile(filename);
+    const worldConfig = await get_worldConfig();
     await dispatch('serverGameState/setGameState', gameState, { root: true });
+    await dispatch('serverGameState/setWorldConfig', worldConfig, {
+      root: true,
+    });
     commit('setSaveFileName', filename);
   },
   async startNewGame(
@@ -53,7 +58,11 @@ const actions = {
       settingsString,
       overwriteExisting
     );
+    const worldConfig = await get_worldConfig();
     await dispatch('serverGameState/setGameState', gameState, { root: true });
+    await dispatch('serverGameState/setWorldConfig', worldConfig, {
+      root: true,
+    });
     commit('setSaveFileName', filename);
     await dispatch('loadSaveFileList');
   },

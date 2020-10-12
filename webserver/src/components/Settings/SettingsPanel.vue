@@ -74,7 +74,7 @@ const filenameValidation = [
 ];
 
 export default {
-  name: 'HelloWorld',
+  name: 'SettingsPanel',
   setup() {
     const loadFileName = ref('');
     const unsavedFileName = ref('');

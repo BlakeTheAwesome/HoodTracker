@@ -17,16 +17,21 @@ save_filename = 'output.txt'
 def str_to_bool(str):
     return bool(distutils.util.strtobool(str))
 
+
 @hug.get('/api/step')
-def step(new_game=False):
+def step(new_game=False, modify_input=None):
+    global settings_string
+    global world
+    
     if new_game:
-        global settings_string
         input_data = HoodTracker.getInputData(save_filename, { 'settings_string': settings_string })
     else:
         input_data = HoodTracker.getInputData(save_filename)
         settings_string = input_data['settings_string']
 
-    global world
+    if modify_input is not None:
+        modify_input(input_data)
+
     world, output_known_exits = HoodTracker.startWorldBasedOnData(input_data)
     output_data = HoodTracker.solve(world)
     HoodTracker.writeResultsToFile(world, input_data, output_data, output_known_exits, save_filename)
@@ -67,6 +72,32 @@ def start_new(filename, settings, overwrite):
     settings_string = settings
     return step(new_game=True)
 
+
+@hug.post('/api/set_entrance')
+def set_entrance(entrance, exit=None):
+    logging.info("f'set_entrance => {entrance} goesto {exit}'")
+    def update_entrance(input_data):
+        remove_entrance = lambda x: not x.startswith(entrance);
+        if (exit == None):
+            input_data['known_exits'] = list(filter(input_data['known_exits'], remove_entrance))
+        else:
+            input_data['known_exits'] = list(filter(input_data['known_exits'], remove_entrance))
+            input_data['please_explore'] = list(filter(input_data['please_explore'], remove_entrance))
+            input_data['please_explore'].append(f'{entrance} goesto {exit}')
+    return step(modify_input=update_entrance)
+
+
+@hug.get('/api/world_config')
+def get_world_config():
+    global world;
+    logging.info("world regions")
+    for region in world.regions:
+        logging.info(f'region: {region.__dict__}')
+
+    world_config = {
+        'entrances': world.get_entrances()
+    };
+    return world_config
 
 @hug.static('/')
 def serve_home():
