@@ -7,8 +7,8 @@ const state = {
   locationsChecked: [],
   equipment: [],
   settingsString: '',
-  gameState: {},
-  worldConfig: {},
+  gameState: null,
+  worldConfig: null,
 };
 
 const getters = {
@@ -16,7 +16,7 @@ const getters = {
   entrancesToCheck: (state) => state.entrancesToCheck,
   knownEntrances: (state) => state.knownEntrances,
   worldConfig: (state) => state.worldConfig,
-  allEntrances: (state) => state.worldConfig.entrances,
+  worldConfigRegions: (state) => state.worldConfig?.regions || [],
 };
 
 function parseEntrancesToCheck(gameState) {

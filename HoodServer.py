@@ -90,13 +90,21 @@ def set_entrance(entrance, exit=None):
 @hug.get('/api/world_config')
 def get_world_config():
     global world;
-    logging.info("world regions")
-    for region in world.regions:
-        logging.info(f'region: {region.__dict__}')
+
+    def gen_regions():
+        for region in world.regions:
+            if region.name in ['Root', 'Root Exits']:
+                continue
+
+            exits = [{'name': x.connected_region} for x in region.exits]
+            locations = [{'name': x.name} for x in region.locations]
+            parsed_region = { 'name': region.name, 'type': region.type.name, 'exits': exits, 'locations': locations }
+            yield parsed_region
 
     world_config = {
-        'entrances': world.get_entrances()
-    };
+        'regions': [region for region in gen_regions()]
+    }
+
     return world_config
 
 @hug.static('/')
