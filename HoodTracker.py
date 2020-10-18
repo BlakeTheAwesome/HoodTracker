@@ -317,6 +317,14 @@ def getSaveFiles():
 def saveFileExists(filename):
     return os.path.exists(f'saves/{filename}')
 
+def migrateExploredExits(input_data):
+    # If any of the exits in please_explore have had their "?" replaced with a name, consider them a known_exits instead
+    if 'please_explore' in input_data:
+        migrate_these = [x for x in input_data['please_explore'] if not x.endswith("?")]
+        for x in migrate_these:
+            input_data['please_explore'].remove(x)
+            input_data['known_exits'].append(x)
+
 
 def getInputData(filename, args=None):
     try:
@@ -335,11 +343,7 @@ def getInputData(filename, args=None):
         input_data[key] = [re.sub("\s*(\(.*)*$", "", x) for x in input_data[key]]
 
     # If any of the exits in please_explore have had their "?" replaced with a name, consider them a known_exits instead
-    if 'please_explore' in input_data:
-        migrate_these = [x for x in input_data['please_explore'] if not x.endswith("?")]
-        for x in migrate_these:
-            input_data['please_explore'].remove(x)
-            input_data['known_exits'].append(x)
+    migrateExploredExits(input_data)
 
     args_settings = None
     if args is not None:

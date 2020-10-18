@@ -20,6 +20,9 @@ const getters = {
 };
 
 function parseEntrancesToCheck(gameState) {
+  if (!gameState.please_explore) {
+    return [];
+  }
   return gameState.please_explore.map((x) => x.split('goesto').shift().trim());
 }
 
@@ -55,9 +58,15 @@ const actions = {
     console.log('setWorldConfig', gameState);
     commit('setWorldConfig', gameState);
   },
-  async setEntranceDestination({ commit }, { from, to }) {
-    console.log(`setEntranceDestination "${from}" goesto "${to}"`);
-    const gameState = await post_set_entrance(from, to);
+  async setEntranceDestination(
+    { commit },
+    { fromRegion, fromEntrance, toRegion }
+  ) {
+    const gameState = await post_set_entrance(
+      fromRegion,
+      fromEntrance,
+      toRegion
+    );
     commit('setGameState', gameState);
   },
 };

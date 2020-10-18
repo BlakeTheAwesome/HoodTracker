@@ -1,3 +1,9 @@
+import sys
+import os
+ootr_path = os.path.join(os.getcwd(), "OoT-Randomizer")
+if ootr_path not in sys.path:
+    sys.path.append(ootr_path)
+
 from collections import Counter
 import ItemPool
 from PySide2.QtWidgets import *

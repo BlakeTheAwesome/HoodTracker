@@ -74,16 +74,26 @@ def start_new(filename, settings, overwrite):
 
 
 @hug.post('/api/set_entrance')
-def set_entrance(entrance, exit=None):
-    logging.info("f'set_entrance => {entrance} goesto {exit}'")
+def set_entrance(from_region, from_entrance, to_region=None):
+    if to_region is None:
+        to_region = '?'
+
+    logging.info("f'set_entrance {from_region} => {from_entrance} goesto {to_region}'")
+    entrance = f'{from_region} -> {from_entrance}'
     def update_entrance(input_data):
         remove_entrance = lambda x: not x.startswith(entrance);
         if (exit == None):
-            input_data['known_exits'] = list(filter(input_data['known_exits'], remove_entrance))
+            input_data['known_exits'] = list(filter(remove_entrance, input_data['known_exits']))
         else:
-            input_data['known_exits'] = list(filter(input_data['known_exits'], remove_entrance))
-            input_data['please_explore'] = list(filter(input_data['please_explore'], remove_entrance))
-            input_data['please_explore'].append(f'{entrance} goesto {exit}')
+            input_data['known_exits'] = list(filter(remove_entrance, input_data['known_exits']))
+            if 'please_explore' not in input_data:
+                input_data['please_explore'] = []
+            
+            input_data['please_explore'] = list(filter(remove_entrance, input_data['please_explore']))
+            input_data['please_explore'].append(f'{entrance} goesto {to_region}')
+        HoodTracker.migrateExploredExits(input_data)
+
+        return input_data
     return step(modify_input=update_entrance)
 
 

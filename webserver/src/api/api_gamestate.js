@@ -49,12 +49,13 @@ export async function post_startNewGame(
   return gameState;
 }
 
-export async function post_set_entrance(from, to) {
+export async function post_set_entrance(fromRegion, fromEntrance, toRegion) {
   const url = buildUrl('set_entrance');
   const config = {
     params: {
-      from: from,
-      to: to,
+      from_region: fromRegion,
+      from_entrance: fromEntrance,
+      to_region: toRegion,
     },
   };
   const data = null;
